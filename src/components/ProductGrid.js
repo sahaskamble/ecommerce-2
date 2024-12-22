@@ -65,9 +65,9 @@ export default function ProductGrid({ products, showFilters = true }) {
   };
 
   return (
-    <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
+    <div className="flex flex-col lg:flex-row gap-8">
       {showFilters && (
-        <div className="lg:col-span-1 space-y-6 h-fit lg:sticky lg:top-24">
+        <div className="w-full lg:w-1/4 space-y-6 h-fit lg:sticky lg:top-24">
           {/* Search Bar */}
           <div className="relative">
             <input
@@ -160,7 +160,7 @@ export default function ProductGrid({ products, showFilters = true }) {
         </div>
       )}
 
-      <div className={`${showFilters ? 'lg:col-span-3' : ''} grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 min-h-[400px] h-fit`}>
+      <div className="flex-1 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 min-h-[400px] h-fit">
         {filteredProducts.length === 0 ? (
           <div className="col-span-full flex flex-col items-center justify-center h-[400px] text-center">
             <h3 className="text-xl font-semibold mb-2">No products found</h3>
