@@ -45,14 +45,14 @@
     position: relative;
     background: var(--background);
     border-radius: 0.75rem;
-    z-index: 1;
+    z-index: 0;
   }
 
   .gradient-border-mask::before {
     content: '';
     position: absolute;
     inset: 0;
-    padding: 2px;
+    padding: 4px;
     border-radius: 0.85rem;
     background: conic-gradient(
       from var(--angle),
@@ -71,6 +71,8 @@
     animation: rotate-gradient 3s linear infinite;
     opacity: 0.5;
     transition: opacity 0.3s ease;
+    pointer-events: none;
+    z-index: -1;
   }
 
   .gradient-border-mask:hover::before {
@@ -119,4 +121,31 @@ body {
   color: var(--foreground);
   background: var(--background);
   font-family: var(--font-geist-sans);
+}
+
+.swal2-popup {
+  font-family: var(--font-geist-sans);
+}
+
+.swal2-title {
+  color: var(--foreground);
+}
+
+.swal2-html-container {
+  color: var(--foreground);
+}
+
+.swal2-confirm {
+  background-color: var(--primary) !important;
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+  .swal2-popup {
+    background: var(--background);
+  }
+  
+  .swal2-title, .swal2-html-container {
+    color: var(--foreground);
+  }
 }

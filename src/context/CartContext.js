@@ -8,6 +8,7 @@ import {
   getAllCartItemsDB,
   clearCartDB
 } from '@/utils/indexedDB';
+import Swal from 'sweetalert2';
 
 const CartContext = createContext();
 
@@ -37,6 +38,7 @@ export function CartProvider({ children }) {
   }, []);
 
   const addToCart = async (product) => {
+    console.log(product);
     try {
       setError(null);
       if (!product || !product.id) {
@@ -91,12 +93,14 @@ export function CartProvider({ children }) {
 
   const clearCart = async () => {
     try {
+      setError(null);
       await clearCartDB();
       setCart([]);
       return true;
     } catch (error) {
       console.error('Error clearing cart:', error);
-      return false;
+      setError(error.message || 'Failed to clear cart');
+      throw error; // Propagate error to be handled by checkout
     }
   };
 
