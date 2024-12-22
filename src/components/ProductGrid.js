@@ -5,6 +5,29 @@ import Image from 'next/image';
 import { useCart } from '@/context/CartContext';
 import { filters } from '@/data/products';
 
+const ProductImage = ({ src, alt, className }) => {
+  const [imgSrc, setImgSrc] = useState(src);
+  const [isError, setIsError] = useState(false);
+
+  const handleError = () => {
+    if (!isError) {
+      // If primary image fails, use a fallback image
+      setImgSrc('https://images.unsplash.com/photo-1515886657613-9f3515b0c78f');
+      setIsError(true);
+    }
+  };
+
+  return (
+    <Image
+      src={imgSrc}
+      alt={alt}
+      fill
+      className={className}
+      onError={handleError}
+    />
+  );
+};
+
 export default function ProductGrid({ products, showFilters = true }) {
   const [activeFilters, setActiveFilters] = useState({
     category: [],
@@ -44,7 +67,7 @@ export default function ProductGrid({ products, showFilters = true }) {
   return (
     <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
       {showFilters && (
-        <div className="lg:col-span-1 space-y-6">
+        <div className="lg:col-span-1 space-y-6 h-fit lg:sticky lg:top-24">
           {/* Search Bar */}
           <div className="relative">
             <input
@@ -52,7 +75,7 @@ export default function ProductGrid({ products, showFilters = true }) {
               placeholder="Search products..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full px-4 py-2 rounded-lg border border-foreground/10 focus:outline-none focus:border-primary"
+              className="w-full px-4 text-black py-2 rounded-lg border border-foreground/10 focus:outline-none focus:border-primary"
             />
           </div>
 
@@ -137,63 +160,70 @@ export default function ProductGrid({ products, showFilters = true }) {
         </div>
       )}
 
-      <div className={`${showFilters ? 'lg:col-span-3' : ''} grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6`}>
-        {filteredProducts.map(product => (
-          <motion.div
-            key={product.id}
-            whileHover={{ scale: 1.02 }}
-            className="gradient-border-mask p-4 bg-background"
-          >
-            <div className="relative h-80 mb-4 overflow-hidden rounded-lg group">
-              <Image
-                src={product.image}
-                alt={product.name}
-                fill
-                className="object-cover transition-opacity duration-300 group-hover:opacity-0"
-              />
-              {product.hoverImage && (
-                <Image
-                  src={product.hoverImage}
-                  alt={`${product.name} alternate view`}
-                  fill
-                  className="object-cover absolute inset-0 opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+      <div className={`${showFilters ? 'lg:col-span-3' : ''} grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 min-h-[400px] h-fit`}>
+        {filteredProducts.length === 0 ? (
+          <div className="col-span-full flex flex-col items-center justify-center h-[400px] text-center">
+            <h3 className="text-xl font-semibold mb-2">No products found</h3>
+            <p className="text-gray-600 dark:text-gray-400">
+              Try adjusting your filters or search terms
+            </p>
+          </div>
+        ) : (
+          filteredProducts.map(product => (
+            <motion.div
+              key={product.id}
+              whileHover={{ scale: 1.02 }}
+              className="gradient-border-mask p-4 bg-background h-full"
+            >
+              <div className="relative h-80 mb-4 overflow-hidden rounded-lg group">
+                <ProductImage
+                  src={product.image}
+                  alt={product.name}
+                  className="object-cover transition-opacity duration-300 group-hover:opacity-0"
                 />
-              )}
-              {product.isNew && (
-                <span className="absolute top-4 left-4 bg-primary text-white px-3 py-1 rounded-full text-sm">
-                  New
-                </span>
-              )}
-              {product.originalPrice && (
-                <span className="absolute top-4 right-4 bg-red-500 text-white px-3 py-1 rounded-full text-sm">
-                  {Math.round(((parseFloat(product.originalPrice.replace('₹', '').replace(',', '')) - 
-                    parseFloat(product.price.replace('₹', '').replace(',', ''))) / 
-                    parseFloat(product.originalPrice.replace('₹', '').replace(',', ''))) * 100)}% OFF
-                </span>
-              )}
-            </div>
-            <h3 className="text-lg font-semibold mb-2">{product.name}</h3>
-            <div className="flex items-center justify-between mb-4">
-              <div>
-                <p className="text-gray-600 dark:text-gray-300">{product.price}</p>
+                {product.hoverImage && (
+                  <ProductImage
+                    src={product.hoverImage}
+                    alt={`${product.name} alternate view`}
+                    className="object-cover absolute inset-0 opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+                  />
+                )}
+                {product.isNew && (
+                  <span className="absolute top-4 left-4 bg-primary text-white px-3 py-1 rounded-full text-sm">
+                    New
+                  </span>
+                )}
                 {product.originalPrice && (
-                  <p className="text-sm text-gray-400 line-through">{product.originalPrice}</p>
+                  <span className="absolute top-4 right-4 bg-red-500 text-white px-3 py-1 rounded-full text-sm">
+                    {Math.round(((parseFloat(product.originalPrice.replace('₹', '').replace(',', '')) - 
+                      parseFloat(product.price.replace('₹', '').replace(',', ''))) / 
+                      parseFloat(product.originalPrice.replace('₹', '').replace(',', ''))) * 100)}% OFF
+                  </span>
                 )}
               </div>
-              <div className="flex items-center gap-1">
-                <span className="text-yellow-400">★</span>
-                <span>{product.rating}</span>
-                <span className="text-gray-400">({product.reviews})</span>
+              <h3 className="text-lg font-semibold mb-2">{product.name}</h3>
+              <div className="flex items-center justify-between mb-4">
+                <div>
+                  <p className="text-gray-600 dark:text-gray-300">{product.price}</p>
+                  {product.originalPrice && (
+                    <p className="text-sm text-gray-400 line-through">{product.originalPrice}</p>
+                  )}
+                </div>
+                <div className="flex items-center gap-1">
+                  <span className="text-yellow-400">★</span>
+                  <span>{product.rating}</span>
+                  <span className="text-gray-400">({product.reviews})</span>
+                </div>
               </div>
-            </div>
-            <button 
-              className="w-full btn-primary"
-              onClick={() => addToCart(product)}
-            >
-              Add to Cart
-            </button>
-          </motion.div>
-        ))}
+              <button 
+                className="w-full btn-primary"
+                onClick={() => addToCart(product)}
+              >
+                Add to Cart
+              </button>
+            </motion.div>
+          ))
+        )}
       </div>
     </div>
   );

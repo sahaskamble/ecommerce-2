@@ -1,57 +1,22 @@
 'use client';
-import { motion } from 'framer-motion';
-import Image from 'next/image';
-import { useCart } from '@/context/CartContext';
-
-const menProducts = [
-  {
-    id: 'm1',
-    name: "Classic White Tee",
-    price: "₹1,499",
-    image: "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab",
-  },
-  {
-    id: 'm2',
-    name: "Denim Jacket",
-    price: "₹3,999",
-    image: "https://images.unsplash.com/photo-1591047139829-d91aecb6caea",
-  },
-  // Add more men's products
-];
+import { products } from '@/data/products';
+import ProductGrid from '@/components/ProductGrid';
 
 export default function MenPage() {
-  const { addToCart } = useCart();
-
   return (
-    <div className="min-h-screen pt-24">
-      <div className="container mx-auto px-6">
-        <h1 className="text-4xl font-bold mb-8">Men's Collection</h1>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {menProducts.map((product) => (
-            <motion.div
-              key={product.id}
-              whileHover={{ scale: 1.02 }}
-              className="gradient-border-mask p-4 bg-background"
-            >
-              <div className="relative h-80 mb-4">
-                <Image
-                  src={product.image}
-                  alt={product.name}
-                  fill
-                  className="object-cover rounded-lg"
-                />
-              </div>
-              <h3 className="text-xl font-semibold mb-2">{product.name}</h3>
-              <p className="text-gray-600 dark:text-gray-300 mb-4">{product.price}</p>
-              <button 
-                className="btn-primary w-full"
-                onClick={() => addToCart(product)}
-              >
-                Add to Cart
-              </button>
-            </motion.div>
-          ))}
+    <div className="min-h-screen pt-24 pb-16">
+      <div className="container mx-auto px-4 sm:px-6">
+        {/* Hero Section */}
+        <div className="mb-12 text-center">
+          <h1 className="text-4xl sm:text-5xl font-bold mb-4">Men's Collection</h1>
+          <p className="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
+            Discover our latest men's fashion collection. From casual essentials to formal wear, 
+            find your perfect style.
+          </p>
         </div>
+
+        {/* Products Grid with Filters */}
+        <ProductGrid products={products.men} showFilters={true} />
       </div>
     </div>
   );

@@ -80,6 +80,87 @@ export const products = {
       tags: ['casual', 'winter'],
       rating: 4.4,
       reviews: 167
+    },
+    {
+      id: 'm7',
+      name: 'Polo T-Shirt',
+      price: '₹1,799',
+      category: 'T-Shirts',
+      color: 'Navy',
+      size: ['S', 'M', 'L', 'XL'],
+      image: 'https://images.unsplash.com/photo-1581655353564-df123a1eb820',
+      hoverImage: 'https://images.unsplash.com/photo-1586363104862-3a5e2ab60d99',
+      tags: ['casual', 'summer'],
+      rating: 4.3,
+      reviews: 145
+    },
+    {
+      id: 'm8',
+      name: 'Cargo Pants',
+      price: '₹2,299',
+      category: 'Pants',
+      color: 'Khaki',
+      size: ['S', 'M', 'L', 'XL'],
+      image: 'https://images.unsplash.com/photo-1473966968600-fa801b869a1a',
+      hoverImage: 'https://images.unsplash.com/photo-1584865288642-42078afe6942',
+      tags: ['casual', 'outdoor'],
+      rating: 4.5,
+      reviews: 98,
+      isNew: true
+    },
+    {
+      id: 'm9',
+      name: 'Formal Blazer',
+      price: '₹5,999',
+      category: 'Jackets',
+      color: 'Black',
+      size: ['M', 'L', 'XL'],
+      image: 'https://images.unsplash.com/photo-1507679799987-c73779587ccf',
+      hoverImage: 'https://images.unsplash.com/photo-1507679799987-c73779587ccg',
+      tags: ['formal', 'business'],
+      rating: 4.8,
+      reviews: 175
+    },
+    {
+      id: 'm10',
+      name: 'Running Shoes',
+      price: '₹3,499',
+      category: 'Shoes',
+      color: 'Black',
+      size: ['UK7', 'UK8', 'UK9', 'UK10'],
+      image: 'https://images.unsplash.com/photo-1542291026-7eec264c27ff',
+      hoverImage: 'https://images.unsplash.com/photo-1542291026-7eec264c27fg',
+      tags: ['sports', 'active'],
+      rating: 4.7,
+      reviews: 234,
+      isNew: true
+    },
+    {
+      id: 'm11',
+      name: 'Striped Sweater',
+      price: '₹2,999',
+      category: 'Sweaters',
+      color: 'Gray',
+      size: ['S', 'M', 'L'],
+      image: 'https://images.unsplash.com/photo-1576566588028-4147f3842f27',
+      hoverImage: 'https://images.unsplash.com/photo-1576566588028-4147f3842f28',
+      tags: ['winter', 'casual'],
+      rating: 4.4,
+      reviews: 112
+    },
+    {
+      id: 'm12',
+      name: 'Linen Shirt',
+      price: '₹1,899',
+      category: 'Shirts',
+      color: 'White',
+      size: ['S', 'M', 'L', 'XL'],
+      image: 'https://images.unsplash.com/photo-1604695573706-53170668f6a6',
+      hoverImage: 'https://images.unsplash.com/photo-1604695573706-53170668f6a7',
+      tags: ['summer', 'formal'],
+      rating: 4.6,
+      reviews: 143,
+      isNew: true
     }
   ],
 
@@ -163,6 +244,87 @@ export const products = {
       tags: ['footwear', 'winter'],
       rating: 4.7,
       reviews: 167
+    },
+    {
+      id: 'w7',
+      name: 'Knit Sweater',
+      price: '₹2,799',
+      category: 'Sweaters',
+      color: 'Beige',
+      size: ['XS', 'S', 'M', 'L'],
+      image: 'https://images.unsplash.com/photo-1576566588028-4147f3842f27',
+      hoverImage: 'https://images.unsplash.com/photo-1576566588028-4147f3842f28',
+      tags: ['winter', 'cozy'],
+      rating: 4.6,
+      reviews: 167,
+      isNew: true
+    },
+    {
+      id: 'w8',
+      name: 'Pleated Skirt',
+      price: '₹1,799',
+      category: 'Skirts',
+      color: 'Black',
+      size: ['XS', 'S', 'M', 'L'],
+      image: 'https://images.unsplash.com/photo-1594633312681-425c7b97ccd1',
+      hoverImage: 'https://images.unsplash.com/photo-1583496661160-fb5886a0aaaa',
+      tags: ['formal', 'office'],
+      rating: 4.4,
+      reviews: 89
+    },
+    {
+      id: 'w9',
+      name: 'Printed Jumpsuit',
+      price: '₹3,499',
+      category: 'Jumpsuits',
+      color: 'Multi',
+      size: ['S', 'M', 'L'],
+      image: 'https://images.unsplash.com/photo-1595081608784-f88a8a2d0968',
+      hoverImage: 'https://images.unsplash.com/photo-1600502281976-e0e31b326509',
+      tags: ['summer', 'party'],
+      rating: 4.7,
+      reviews: 156,
+      isNew: true
+    },
+    {
+      id: 'w10',
+      name: 'Leather Handbag',
+      price: '₹4,999',
+      category: 'Accessories',
+      color: 'Brown',
+      size: ['One Size'],
+      image: 'https://images.unsplash.com/photo-1584917865442-de89df76afd3',
+      hoverImage: 'https://images.unsplash.com/photo-1584917865442-de89df76afd4',
+      tags: ['accessories', 'luxury'],
+      rating: 4.9,
+      reviews: 203
+    },
+    {
+      id: 'w11',
+      name: 'Yoga Pants',
+      price: '₹1,999',
+      category: 'Activewear',
+      color: 'Black',
+      size: ['XS', 'S', 'M', 'L'],
+      image: 'https://images.unsplash.com/photo-1508427953056-b00b8d78ebf5',
+      hoverImage: 'https://images.unsplash.com/photo-1508427953056-b00b8d78ebf6',
+      tags: ['sports', 'active'],
+      rating: 4.5,
+      reviews: 178
+    },
+    {
+      id: 'w12',
+      name: 'Cocktail Dress',
+      price: '₹5,999',
+      category: 'Dresses',
+      color: 'Red',
+      size: ['XS', 'S', 'M', 'L'],
+      image: 'https://images.unsplash.com/photo-1572804013309-59a88b7e92f1',
+      hoverImage: 'https://images.unsplash.com/photo-1572804013309-59a88b7e92f2',
+      tags: ['party', 'evening'],
+      rating: 4.8,
+      reviews: 145,
+      isNew: true
     }
   ],
 
@@ -222,6 +384,62 @@ export const products = {
       tags: ['footwear', 'sale'],
       rating: 4.5,
       reviews: 124
+    },
+    {
+      id: 's5',
+      name: 'Printed T-Shirt',
+      price: '₹799',
+      originalPrice: '₹1,599',
+      discount: 50,
+      category: 'T-Shirts',
+      color: 'Multi',
+      size: ['S', 'M', 'L'],
+      image: 'https://images.unsplash.com/photo-1562157873-818bc0726f68',
+      tags: ['casual', 'sale'],
+      rating: 4.2,
+      reviews: 56
+    },
+    {
+      id: 's6',
+      name: 'Canvas Shoes',
+      price: '₹1,499',
+      originalPrice: '₹2,999',
+      discount: 50,
+      category: 'Shoes',
+      color: 'Blue',
+      size: ['UK7', 'UK8', 'UK9'],
+      image: 'https://images.unsplash.com/photo-1549298916-b41d501d3772',
+      tags: ['casual', 'sale'],
+      rating: 4.4,
+      reviews: 87
+    },
+    {
+      id: 's7',
+      name: 'Crossbody Bag',
+      price: '₹1,999',
+      originalPrice: '₹3,999',
+      discount: 50,
+      category: 'Accessories',
+      color: 'Black',
+      size: ['One Size'],
+      image: 'https://images.unsplash.com/photo-1584917865442-de89df76afd3',
+      tags: ['accessories', 'sale'],
+      rating: 4.6,
+      reviews: 93
+    },
+    {
+      id: 's8',
+      name: 'Winter Coat',
+      price: '₹4,999',
+      originalPrice: '₹9,999',
+      discount: 50,
+      category: 'Jackets',
+      color: 'Gray',
+      size: ['M', 'L', 'XL'],
+      image: 'https://images.unsplash.com/photo-1539533113208-f6df8cc8b543',
+      tags: ['winter', 'sale'],
+      rating: 4.7,
+      reviews: 112
     }
   ]
 };
@@ -242,4 +460,23 @@ export const filters = {
     { label: 'Price: High to Low', value: 'price-desc' },
     { label: 'Most Popular', value: 'popular' }
   ]
-}; 
+};
+
+export const categories = [
+  {
+    name: 'Men',
+    image: 'https://images.unsplash.com/photo-1516257984-b1b4d707412e'
+  },
+  {
+    name: 'Women',
+    image: 'https://images.unsplash.com/photo-1581044777550-4cfa60707c03'
+  },
+  {
+    name: 'Accessories',
+    image: 'https://images.unsplash.com/photo-1523170335258-f5ed11844a49'
+  },
+  {
+    name: 'Sale',
+    image: 'https://images.unsplash.com/photo-1607083206869-4c7672e72a8a'
+  }
+]; 
