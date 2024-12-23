@@ -1,5 +1,5 @@
 'use client';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Image from 'next/image';
 import { useCart } from '@/context/CartContext';
@@ -11,8 +11,8 @@ const ProductImage = ({ src, alt, className }) => {
 
   const handleError = () => {
     if (!isError) {
-      // If primary image fails, use a fallback image
-      setImgSrc('https://images.unsplash.com/photo-1515886657613-9f3515b0c78f');
+      // Use a more reliable fallback image
+      setImgSrc('https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=800&auto=format&fit=crop');
       setIsError(true);
     }
   };
@@ -24,6 +24,9 @@ const ProductImage = ({ src, alt, className }) => {
       fill
       className={className}
       onError={handleError}
+      loading="lazy"
+      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+      quality={75}
     />
   );
 };
@@ -37,7 +40,12 @@ export default function ProductGrid({ products, showFilters = true, showMobileFi
     sortBy: 'newest'
   });
   const [searchQuery, setSearchQuery] = useState('');
+  const [isClient, setIsClient] = useState(false);
   const { addToCart } = useCart();
+
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
 
   const filteredProducts = products.filter(product => {
     if (searchQuery && !product.name.toLowerCase().includes(searchQuery.toLowerCase())) {
@@ -68,7 +76,7 @@ export default function ProductGrid({ products, showFilters = true, showMobileFi
     <div className="flex flex-col lg:flex-row gap-6">
       {showFilters && (
         <AnimatePresence>
-          {(showMobileFilters || window.innerWidth >= 1024) && (
+          {(showMobileFilters || (isClient && window.innerWidth >= 1024)) && (
             <motion.div
               initial={{ height: 0, opacity: 0 }}
               animate={{ height: 'auto', opacity: 1 }}
